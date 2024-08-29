@@ -34,7 +34,9 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 
 # CodeIgniter directories
-
+application/cache/*
+application/logs/*
+application/config/*
 application/config/.htaccess
 
 # Ignorar todas las configuraciones excepto de ejemplo
