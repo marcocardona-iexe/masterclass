@@ -2,242 +2,201 @@
 <html lang="en">
 
 <head>
-    <title>Masterclass - Nueva</title>
-
-    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Meta -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="codedthemes">
-    <meta name="keywords" content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
-    <meta name="author" content="codedthemes">
-
-    <!-- Favicon icon -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets//images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="<?php echo base_url(); ?>assets//images/favicon.ico" type="image/x-icon">
-
-    <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
-
-    <!-- themify -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//icon/themify-icons/themify-icons.css">
-
-    <!-- iconfont -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//icon/icofont/css/icofont.css">
-
-    <!-- simple line icon -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//icon/simple-line-icons/css/simple-line-icons.css">
-
-    <!-- Required Fremwork -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//plugins/bootstrap/css/bootstrap.min.css">
-
-    <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//css/main.css">
-
-    <!-- Responsive.css-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//css/responsive.css">
-
-
-
+    <meta name="author" content="Kodinger">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SPB - Iexe Universidad</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/login.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.iexe.edu.mx/wp-content/themes/iexe-unicorn/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.iexe.edu.mx/wp-content/themes/iexe-unicorn/assets/img/favicon-16x16.png">
 </head>
 
-<body class="sidebar-mini fixed">
-    <div class="wrapper">
-        <div class="loader-bg">
-            <div class="loader-bar">
-            </div>
-        </div>
-        <!-- Navbar-->
-        <header class="main-header-top hidden-print">
-            <a href="index.html" class="logo"><img class="img-fluid able-logo" src="<?php echo base_url(); ?>assets//images/logo.png" alt="Theme-logo"></a>
-            <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
-                <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
-                <!-- Navbar Right Menu-->
-                <div class="navbar-custom-menu">
-                    <ul class="top-nav">
-                        <!-- User Menu-->
-                        <li class="dropdown">
-                            <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
-                                <span><img class="img-circle " src="<?php echo base_url(); ?>assets//images/avatar-1.png" style="width:40px;" alt="User Image"></span>
-                                <span>Raul <b>Sandoval</b> <i class=" icofont icofont-simple-down"></i></span>
-
-                            </a>
-                            <ul class="dropdown-menu settings-menu">
-                                <li><a href="#!"><i class="icon-settings"></i> Settings</a></li>
-                                <li><a href="#"><i class="icon-user"></i> Profile</a></li>
-                                <li><a href="#"><i class="icon-envelope-open"></i> My Messages</a></li>
-                                <li class="p-0">
-                                    <div class="dropdown-divider m-0"></div>
-                                </li>
-                                <li><a href="#"><i class="icon-lock"></i> Lock Screen</a></li>
-                                <li><a href="login1.html"><i class="icon-logout"></i> Logout</a></li>
-
-                            </ul>
-                        </li>
-                    </ul>
-
-                </div>
-            </nav>
-        </header>
-        <!-- Side-Nav-->
-        <aside class="main-sidebar hidden-print ">
-            <section class="sidebar" id="sidebar-scroll">
-                <!-- Sidebar Menu-->
-                <ul class="sidebar-menu">
-                    <li class="nav-level">--- Masterclass</li>
-                    <li class="treeview">
-                        <a class="waves-effect waves-dark" href="index.html">
-                            <i class="icon-speedometer"></i><span> Lista de Masterclass</span>
-                        </a>
-                    </li>
-                </ul>
-            </section>
-        </aside>
-
-        <!-- Sidebar chat end-->
-        <div class="content-wrapper">
-            <!-- Container-fluid starts -->
-            <div class="container-fluid">
-                <!-- Row Starts -->
-                <div class="row">
-                    <div class="col-sm-12 p-0">
-                        <div class="main-header">
-                            <h4>Acceso Masterclass</h4>
-                            <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
-                                <li class="breadcrumb-item"><a href="index.html"><i class="icofont icofont-home"></i></a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="#!">Masterclass</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="sample-page.html">Acceso</a>
-                                </li>
-                            </ol>
-                        </div>
+<body class="my-login-page">
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-md-center h-100">
+                <div class="card-wrapper">
+                    <div class="brand">
+                        <img src="<?php echo base_url(); ?>assets/img/iexe_login.jpg" alt="logo">
                     </div>
-                </div>
-                <!-- Row end -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-block">
-                                <div class="md-card-block">
-                                    <div class="container mt-5">
-                                        <div class="mt-3 text-center">
-                                            <h2><?php echo $masterclass->titulo; ?></h2>
-                                        </div>
-
-                                        <div class="mt-3">
-                                            <img id="imagenPreview" src="<?php echo base_url() . $masterclass->imagen; ?>" alt="Previsualización de la Imagen" style="max-width: 100%;">
-                                        </div>
-
-                                        <div class="mt-3">
-                                            <div class="form-group">
-                                                <label for="titulo">Codigo de acceso</label>
-                                                <input type="text" class="form-control" id="titulo" name="titulo" required>
-                                            </div>
-                                            <button class="btn btn-primary" id="ingresar">Ingresar</button>
-                                        </div>
-
-
-
+                    <div class="card fat">
+                        <div class="card-body">
+                            <h4 class="card-title">Acceso Masterclass</h4>
+                            <div>
+                                <div class="form-group">
+                                    <label for="email">Correo del docente</label>
+                                    <input id="correo" type="email" class="form-control" name="correo" value="" required>
+                                    <div id="error-message" class="invalid-feedback">
+                                        Debe ingresar un correo electrónico válido.
                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Clave del moderador</label>
+                                    <input id="password" type="password" class="form-control" name="password" autocomplete="new-password">
+                                    <div class="invalid-feedback" id="msj_password">
+                                        Password is required
+                                    </div>
+                                </div>
 
 
+                                <div class="form-group m-0 text-center">
+                                    <div id="error_login" class="mt-2 mb-3"></div>
+
+                                    <button id="iniciar_sesion" class="btn btn-primary btn-block">
+                                        Acceder
+                                    </button>
                                 </div>
                             </div>
+
                         </div>
+                    </div>
+                    <div class="footer">
+                        Powered by IEXE Universidad | Todos los derechos reservados 2024
                     </div>
                 </div>
             </div>
-            <!-- Container-fluid ends -->
         </div>
-    </div>
+    </section>
 
-
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 9]>
-<div class="ie-warning">
-    <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-    <div class="iew-container">
-        <ul class="iew-download">
-            <li>
-                <a href="http://www.google.com/chrome/">
-                    <img src="<?php echo base_url(); ?>assets//images/browser/chrome.png" alt="Chrome">
-                    <div>Chrome</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="<?php echo base_url(); ?>assets//images/browser/firefox.png" alt="Firefox">
-                    <div>Firefox</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://www.opera.com">
-                    <img src="<?php echo base_url(); ?>assets//images/browser/opera.png" alt="Opera">
-                    <div>Opera</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.apple.com/safari/">
-                    <img src="<?php echo base_url(); ?>assets//images/browser/safari.png" alt="Safari">
-                    <div>Safari</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="<?php echo base_url(); ?>assets//images/browser/ie.png" alt="">
-                    <div>IE (9 & above)</div>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <p>Sorry for the inconvenience!</p>
-</div>
-<![endif]-->
-    <!-- Warning Section Ends -->
-
-    <!-- Required Jqurey -->
-    <script src="<?php echo base_url(); ?>assets//plugins/jquery/dist/jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets//plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets//plugins/tether/dist/js/tether.min.js"></script>
-
-    <!-- Required Fremwork -->
-    <script src="<?php echo base_url(); ?>assets//plugins/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- waves effects.js -->
-    <script src="<?php echo base_url(); ?>assets//plugins/Waves/waves.min.js"></script>
-
-    <!-- Scrollbar JS-->
-    <script src="<?php echo base_url(); ?>assets//plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <script src="<?php echo base_url(); ?>assets//plugins/jquery.nicescroll/jquery.nicescroll.min.js"></script>
-
-    <!--classic JS-->
-    <script src="<?php echo base_url(); ?>assets//plugins/classie/classie.js"></script>
-
-    <!-- notification -->
-    <script src="<?php echo base_url(); ?>assets//plugins/notification/js/bootstrap-growl.min.js"></script>
-
-    <!-- custom js -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets//js/main.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets//pages/elements.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets//js/menu.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        $('#ingresar').on('click', function(e) {
+        $(document).ready(function() {
+
+
+            $(document).ready(function() {
+                // Agregar validación al evento blur
+                $('#correo, #password').on('blur', function() {
+                    // Validar el campo de correo electrónico
+                    if ($(this).attr('id') === 'correo') {
+                        var correo = $(this).val().trim();
+                        var correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                        if (!correoValido.test(correo)) {
+                            $(this).removeClass('is-valid').addClass('is-invalid');
+                            $('#error-message').text('Debe ingresar un correo electrónico válido.');
+                        } else {
+                            $(this).removeClass('is-invalid').addClass('is-valid');
+                            $('#error-message').text('');
+                        }
+                    }
+
+                    // Validar el campo de contraseña
+                    if ($(this).attr('id') === 'password') {
+                        var password = $(this).val().trim();
+
+                        if (password === '') {
+                            $(this).removeClass('is-valid').addClass('is-invalid');
+                            $('#error-message').text('Debe ingresar una contraseña.');
+                        } else {
+                            $(this).removeClass('is-invalid').addClass('is-valid');
+                            $('#error-message').text('');
+                        }
+                    }
+                });
+
+                // Remover clases is-valid e is-invalid al cambiar el contenido del campo de entrada
+                $('#correo, #password').on('input', function() {
+                    $(this).removeClass('is-valid is-invalid');
+                    $('#error-message').text('');
+                });
+
+                $('#iniciar_sesion').click(function(e) {
+                    $("#iniciar_sesion").html(`
+                        <div class="spinner-grow spinner-grow-sm text-light" role="status">
+                        </div>
+                        <div class="spinner-grow spinner-grow-sm text-light" role="status">
+                        </div>
+                        <div class="spinner-grow spinner-grow-sm text-light" role="status">
+                        </div>
+                        <div class="spinner-grow spinner-grow-sm text-light" role="status">
+                        </div>`)
+                    $('#error-message').text('').hide();
+
+                    e.preventDefault(); // Evitar el envío del formulario por defecto
+
+                    var correo = $('#correo').val().trim();
+                    var password = $('#password').val().trim();
+
+                    // Expresión regular para validar correo electrónico
+                    var correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                    // Validar correo electrónico
+                    if (!correoValido.test(correo)) {
+                        $('#correo').addClass('is-invalid');
+                        $('#error-message').text('Debe ingresar un correo electrónico válido.');
+                        $("#iniciar_sesion").html(`Inicar sesión`)
+                        return false;
+                    } else {
+                        $('#correo').removeClass('is-invalid').addClass('is-valid');
+                        $('#error-message').text('');
+                    }
+
+                    // Validar contraseña
+                    if (password === '') {
+                        $('#password').addClass('is-invalid');
+                        $('#error-message').text('Debe ingresar una contraseña.');
+                        $("#iniciar_sesion").html(`Inicar sesión`)
+                        return false;
+                    } else {
+                        $('#password').removeClass('is-invalid').addClass('is-valid');
+                        $('#error-message').text('');
+                    }
+
+                    // Enviar datos por AJAX
+                    $.ajax({
+                        url: 'validar-accesomasterclass',
+                        method: 'POST',
+                        data: {
+                            correo: correo,
+                            codigo: password
+                        },
+                        dataType: 'json', // Esperamos una respuesta JSON del servidor
+                        success: function(response) {
+                            // Manejar la respuesta del servidor
+                            console.log(response.error_code);
+                            // Si hay un error, mostrar mensaje de error
+                            if (response.code == "is_not_ok") {
+                                $('#error_login').text(response.error_message).show();
+                                $('#error_login').fadeOut(5000);
+                                $("#iniciar_sesion").html(`Inicar sesión`)
+
+
+                            } else if (response.acceso) {
+                                // Esperar 5 segundos antes de redirigir
+                                $("#iniciar_sesion").html(`<i class="fa-solid fa-circle-check"></i> Usuario validado correctamente`);
+                                setTimeout(function() {
+                                    // Realizar la redirección después de 5 segundos
+                                    window.location.href = 'lista-alumnos';
+                                }, 2000); // 5000 milisegundos = 5 segundos
+
+                                // Si no hay error, redirigir o realizar otra acción
+                                window.location.href = 'sala/' + response.session;
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // Manejar errores de la solicitud AJAX
+                            console.error(error);
+                        }
+                    });
+                });
+            });
+
+
+            // Remover clases is-valid e is-invalid al cambiar el contenido del campo de entrada
+            $('#correo, #password').on('input', function() {
+                $(this).removeClass('is-valid is-invalid');
+                $('#error-message').text('').hide();
+            });
+
 
         });
     </script>
-
 </body>
 
 </html>

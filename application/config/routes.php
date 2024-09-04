@@ -51,10 +51,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $route['default_controller'] = 'welcome';
 
-$route['lista'] = 'MasterclasController/index';
-$route['nueva-masterclass'] = 'MasterclasController/nueva_masterclass';
+$route['lista-masterclass'] = 'MasterclasController/index';
+$route['nueva-sesion'] = 'MasterclasController/nueva_sesion';
 $route['agregar-masterclass'] = 'MasterclasController/agregar_masterclass';
-$route['acceso-docente/(:any)'] = 'MasterclasController/acceso_docente/$1';
+$route['verifica-codigo-docente/(:any)'] = 'MasterclasController/verifica_codigo_docente/$1';
+$route['verifica-codigo-alumno/(:any)'] = 'MasterclasController/verifica_codigo_alumno/$1';
+$route['acceso-docente'] = 'MasterclasController/acceso_docente';
+
+
+$route['acceso-alumno'] = 'MasterclasController/acceso_alumno';
+
+
+
+$route['validar-accesomasterclass'] = 'MasterclasController/validar_accesomasterclass';
+$route['sala/(:any)'] = 'MasterclasController/sala/$1';
+
+
+
+
+#$route['acceso-docente/(:any)'] = 'MasterclasController/acceso_docente/$1';
+
+$route['crear-sala'] = "BigbluebuttonController/crear_sala";
 
 
 $route['404_override'] = '';

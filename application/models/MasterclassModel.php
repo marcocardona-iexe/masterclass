@@ -24,9 +24,52 @@ class MasterclassModel extends CI_Model
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
 
+    public function getByAccesoDocente($correo, $codigo_docente)
+    {
+        $query = $this->db->get_where($this->table, ['correo_docente' => $correo, "codigo_docente" => $codigo_docente]);
+
+        // Verifica si se encontró al menos un resultado
+        if ($query->num_rows() > 0) {
+            // Retorna el campo 'session' del primer resultado
+
+            return $query->row()->session;
+        } else {
+            return false;
+        }
+    }
+    public function verifica_codigo_docente($codigo_docente)
+    {
+        $query = $this->db->get_where($this->table, ["codigo_docente" => $codigo_docente]);
+        // Verifica si se encontró al menos un resultado
+        if ($query->num_rows() > 0) {
+            // Retorna el campo 'session' del primer resultado
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function verifica_codigo_alumno($codigo_alumno)
+    {
+        $query = $this->db->get_where($this->table, ["codigo_alumno" => $codigo_alumno]);
+        // Verifica si se encontró al menos un resultado
+        if ($query->num_rows() > 0) {
+            // Retorna el campo 'session' del primer resultado
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
     public function getBySession($session)
     {
         return $this->db->get_where($this->table, ['session' => $session])->row();
+    }
+
+    public function getByCodigoAlumno($codigo_alumno)
+    {
+        return $this->db->get_where($this->table, ['codigo_alumno' => $codigo_alumno])->row();
     }
 
     // Método para obtener todos los registros

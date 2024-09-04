@@ -44,6 +44,7 @@
     <!-- Responsive.css-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//css/responsive.css">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 
 </head>
@@ -110,7 +111,7 @@
                 <div class="row">
                     <div class="col-sm-12 p-0">
                         <div class="main-header">
-                            <h4>Nueva Masterclass</h4>
+                            <h4>Nueva Sesion</h4>
                             <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                                 <li class="breadcrumb-item"><a href="index.html"><i class="icofont icofont-home"></i></a>
                                 </li>
@@ -131,39 +132,87 @@
                                     <div class="container mt-5">
                                         <h2>Formulario de Registro</h2>
                                         <form id="registroForm" enctype="multipart/form-data">
-                                            <div class="form-group">
-                                                <label for="titulo">Título</label>
-                                                <input type="text" class="form-control" id="titulo" name="titulo" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nombreDocente">Nombre del Docente</label>
-                                                <input type="text" class="form-control" id="nombreDocente" name="docente" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="codigoModerador">Código del Moderador</label>
-                                                <input type="text" class="form-control" id="codigoModerador" name="codigo_moderador" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="codigoAlumno">Código del Alumno</label>
-                                                <input type="text" class="form-control" id="codigoAlumno" name="codigo_alumno" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="imagen">Imagen</label>
-                                                <input type="file" class="form-control-file" id="imagen" name="imagen" required>
-                                                <small id="imagenError" class="text-danger d-none">Solo se permiten archivos JPG.</small>
-                                                <div class="mt-3">
-                                                    <img id="imagenPreview" src="#" alt="Previsualización de la Imagen" style="max-width: 100%; display: none;">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="titulo">Título</label>
+                                                    <input type="text" class="form-control" id="titulo" name="titulo" required>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="fecha">Fecha</label>
-                                                <input type="date" class="form-control" id="fecha" name="fecha" required>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="imagen">Imagen</label>
+                                                    <input type="file" class="form-control-file" id="imagen" name="imagen" required>
+                                                    <small id="imagenError" class="text-danger d-none">Solo se permiten archivos JPG.</small>
+                                                    <div class="mt-3">
+                                                        <img id="imagenPreview" src="#" alt="Previsualización de la Imagen" style="max-width: 100%; display: none;">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="hora">Hora</label>
-                                                <input type="time" class="form-control" id="hora" name="hora" required>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="nombreDocente">Nombre del Docente</label>
+                                                    <input type="text" class="form-control" id="docente" name="docente" required>
+                                                </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Enviar</button>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="nombreDocente">Correo del Docente</label>
+                                                    <input type="text" class="form-control" id="correo_docente" name="correo_docente" required>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="codigoModerador">Código del Moderador</label>
+                                                    <div class="d-flex">
+                                                        <input type="text" class="form-control ml-2" id="codigo_docente" name="codigo_docente" required readonly>
+                                                        <button class="btn btn-success" type="button" id="generar_codigo_moderador"><i class="fa-solid fa-arrows-rotate"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="codigoAlumno">Código del Alumno</label>
+                                                    <div class="d-flex">
+                                                        <input type="text" class="form-control" id="codigo_alumno" name="codigo_alumno" required readonly>
+                                                        <button class="btn btn-success" type="button" id="generar_codigo_alumno"><i class="fa-solid fa-arrows-rotate"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">Tipo de sesión</label>
+                                                    <select class="form-control" id="exampleFormControlSelect1" name="tipo">
+                                                        <option>Seleccione una opción</option>
+                                                        <option>MASTERCLASS</option>
+                                                        <option>TALLER</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="fecha">Fecha</label>
+                                                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="hora">Hora</label>
+                                                    <input type="time" class="form-control" id="hora" name="hora" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <button type="submit" class="btn btn-primary">Enviar</button>
+
+                                            </div>
+
+
                                         </form>
                                     </div>
 
@@ -251,6 +300,74 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>assets//js/menu.min.js"></script>
 
     <script>
+        //codigo_alumno
+        $('#generar_codigo_moderador').on('click', function() {
+            // Función para generar el código alfanumérico
+
+            function generateCode(length) {
+                var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                var code = '';
+                for (var i = 0; i < length; i++) {
+                    var randomIndex = Math.floor(Math.random() * characters.length);
+                    code += characters.charAt(randomIndex);
+                }
+                return code;
+            }
+
+            // Genera un código de 8 caracteres
+
+            let newCode = generateCode(8);
+            $.ajax({
+                type: "POST",
+                url: "verifica-codigo-docente/" + newCode,
+                dataType: "json",
+                success: function(response) {
+                    if (!response.existe) {
+                        $('#codigo_docente').val(newCode);
+                    } else {
+                        alert("El codigo ya existe");
+                    }
+                }
+            });
+
+            // Muestra el código generado en el elemento <p> con id "codeOutput"
+        });
+
+
+        //codigo_alumno
+        $('#generar_codigo_alumno').on('click', function() {
+            // Función para generar el código alfanumérico
+
+            function generateCode(length) {
+                var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                var code = '';
+                for (var i = 0; i < length; i++) {
+                    var randomIndex = Math.floor(Math.random() * characters.length);
+                    code += characters.charAt(randomIndex);
+                }
+                return code;
+            }
+
+            // Genera un código de 8 caracteres
+
+            let newCode = generateCode(8);
+            $.ajax({
+                type: "POST",
+                url: "verifica-codigo-alumno/" + newCode,
+                dataType: "json",
+                success: function(response) {
+                    if (!response.existe) {
+                        $('#codigo_alumno').val(newCode);
+                    } else {
+                        alert("El codigo ya existe");
+                    }
+                }
+            });
+
+            // Muestra el código generado en el elemento <p> con id "codeOutput"
+        });
+
+
         $('#imagen').change(function() {
             var file = this.files[0];
             var fileType = file['type'];
