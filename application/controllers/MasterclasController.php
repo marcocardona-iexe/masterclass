@@ -38,7 +38,7 @@ class MasterclasController extends CI_Controller
                     "hora" => $dataSession->hora,
                     "titulo" => $dataSession->titulo,
                     "docente" => $dataSession->docente,
-                    "codigo" => $dataSession->alumno,
+                    "codigo" => $dataSession->codigo_alumno,
                     "img" => $dataSession->imagen,
                 )
             );
