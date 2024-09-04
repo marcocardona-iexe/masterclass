@@ -141,6 +141,8 @@
                                             <div class="form-group">
                                                 <label for="titulo">Codigo de acceso</label>
                                                 <input type="text" class="form-control" id="codigo_moderador" readonly value="<?php echo $masterclass->codigo_docente; ?>">
+                                                <input type="text" class="form-control" id="codigo_alumno" readonly value="<?php echo $masterclass->codigo_alumno; ?>">
+
                                             </div>
                                             <div class="form-group">
                                                 <label for="titulo">Nombre Masterclass</label>
@@ -154,6 +156,7 @@
                                                 <label for="titulo">Nombre</label>
                                                 <input type="text" class="form-control" id="docente" readonly value="<?php echo $masterclass->docente; ?>">
                                             </div>
+
                                             <button class="btn btn-primary" id="ingresar">Iniciar</button>
                                         </div>
 

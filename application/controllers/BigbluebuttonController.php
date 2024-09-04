@@ -137,8 +137,10 @@ class BigbluebuttonController extends CI_Controller
         // Verificar si la sala está en ejecución
         if ($this->is_meeting_running($meetId)) {
             // Generar la URL para unirse a la sala si ya está en ejecución
+            echo "joinfullName=" . urlencode($alumno) . "&meetingID=$meetId&password=$passwordUsuario&redirect=true" . "hRCmE3KIewblr8SULmO4sBYB5nrMrhZqMygfwaVNeA";
             $checksum = sha1("joinfullName=" . urlencode($alumno) . "&meetingID=$meetId&password=$passwordUsuario&redirect=true" . "hRCmE3KIewblr8SULmO4sBYB5nrMrhZqMygfwaVNeA");
-            $base_url = $this->url . "join?fullName=" . urlencode($alumno) . "&meetingID=$meetId&password=$passwordUsuario&redirect=true&checksum=" . $checksum;
+            $base_url = "https://meet.iexe.edu.mx/bigbluebutton/api/join?fullName=". urlencode($alumno) . "&meetingID=$meetId&password=$passwordUsuario&redirect=true&checksum=" . $checksum;
+
 
             // // Guardar el nombre del alumno en la base de datos
             // $this->load->model('AlumnoModel');
