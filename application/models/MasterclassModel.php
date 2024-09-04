@@ -32,7 +32,7 @@ class MasterclassModel extends CI_Model
         if ($query->num_rows() > 0) {
             // Retorna el campo 'session' del primer resultado
 
-            return $query->row()->session;
+            return $query->row();
         } else {
             return false;
         }

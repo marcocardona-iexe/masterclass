@@ -166,9 +166,9 @@ class MasterclasController extends CI_Controller
         if ($session) {
             // La sesión existe, realizar alguna acción con la sesión
             // Ejemplo: cargar una vista con la sesión o redirigir al usuario
-            echo json_encode(["acceso" => true, "session" => $session]);
+            echo json_encode(["acceso" => 1, "session" => $session]);
         } else {
-            echo json_encode(["acceso" => false, "mesage" => "Acceso denegado. No se encontró la sesión."]);
+            echo json_encode(["acceso" => 0, "mesage" => "Acceso denegado. No se encontró la sesión."]);
         }
     }
 

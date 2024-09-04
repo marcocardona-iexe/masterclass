@@ -18,11 +18,11 @@
             <div class="row justify-content-md-center h-100">
                 <div class="card-wrapper">
                     <div class="brand">
-                        <img src="<?php echo base_url(); ?>assets/img/iexe_login.jpg" alt="logo">
+                        <img src="<?php echo base_url(); ?>assets/images/iexe_login.jpg" alt="logo">
                     </div>
                     <div class="card fat">
                         <div class="card-body">
-                            <h4 class="card-title">Acceso Masterclass</h4>
+                            <h4 class="card-title">Credenciales de Sesión</h4>
                             <div>
                                 <div class="form-group">
                                     <label for="email">Correo del docente</label>
@@ -36,18 +36,62 @@
                                     <label for="password">Clave del moderador</label>
                                     <input id="password" type="password" class="form-control" name="password" autocomplete="new-password">
                                     <div class="invalid-feedback" id="msj_password">
-                                        Password is required
+                                        La clave del moderador es necesaria
+                                    </div>
+                                </div>
+                                <div class="col-md-12" id="datos-session" style="margin-top: 10px; display:none;">
+                                    <!-- Tarjeta de Información -->
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <!-- Información de la Masterclass -->
+                                            <div class="row">
+                                                <div class="col-sm-12 font-weight-bold">Masterclass:</div>
+                                                <div class="col-sm-12" id="info-titulo"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 font-weight-bold">Id de la sesión:</div>
+                                                <div class="col-sm-12" id="info-session"></div>
+                                                <input id="session" value="" hidden>
+
+                                            </div>
+                                            <!-- Información del Docente -->
+                                            <div class="row">
+                                                <div class="col-sm-12 font-weight-bold">Docente:</div>
+                                                <div class="col-sm-12" id="info-docente"></div>
+
+                                            </div>
+
+                                            <!-- Información de la Fecha -->
+                                            <div class="row">
+                                                <div class="col-sm-12 font-weight-bold">Fecha:</div>
+                                                <div class="col-sm-12" id="info-fecha"></div>
+                                            </div>
+                                            <!-- Información de la Hora -->
+                                            <div class="row">
+                                                <div class="col-sm-12 font-weight-bold">Hora:</div>
+                                                <div class="col-sm-12" id="info-hora"></div>
+                                                <input id="hora_inicio" value="" hidden>
+                                            </div>
+                                            <div class="row">
+                                                <input id="codigo_alumno" value="" hidden>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
 
-                                <div class="form-group m-0 text-center">
-                                    <div id="error_login" class="mt-2 mb-3"></div>
 
-                                    <button id="iniciar_sesion" class="btn btn-primary btn-block">
-                                        Acceder
-                                    </button>
-                                </div>
+                            </div>
+
+                            <div class="form-group m-0 text-center">
+                                <div id="error_login" class="mt-2 mb-3"></div>
+
+                                <button id="iniciar_sesion" class="btn btn-primary btn-block">
+                                    Confirmar
+                                </button>
+                                <button id="iniciar_meet" style="display: none;" class="btn btn-primary btn-block">
+                                    Iniciar Meet
+                                </button>
                             </div>
 
                         </div>
@@ -69,45 +113,44 @@
         $(document).ready(function() {
 
 
-            $(document).ready(function() {
-                // Agregar validación al evento blur
-                $('#correo, #password').on('blur', function() {
-                    // Validar el campo de correo electrónico
-                    if ($(this).attr('id') === 'correo') {
-                        var correo = $(this).val().trim();
-                        var correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // Agregar validación al evento blur
+            $('#correo, #password').on('blur', function() {
+                // Validar el campo de correo electrónico
+                if ($(this).attr('id') === 'correo') {
+                    var correo = $(this).val().trim();
+                    var correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-                        if (!correoValido.test(correo)) {
-                            $(this).removeClass('is-valid').addClass('is-invalid');
-                            $('#error-message').text('Debe ingresar un correo electrónico válido.');
-                        } else {
-                            $(this).removeClass('is-invalid').addClass('is-valid');
-                            $('#error-message').text('');
-                        }
+                    if (!correoValido.test(correo)) {
+                        $(this).removeClass('is-valid').addClass('is-invalid');
+                        $('#error-message').text('Debe ingresar un correo electrónico válido.');
+                    } else {
+                        $(this).removeClass('is-invalid').addClass('is-valid');
+                        $('#error-message').text('');
                     }
+                }
 
-                    // Validar el campo de contraseña
-                    if ($(this).attr('id') === 'password') {
-                        var password = $(this).val().trim();
+                // Validar el campo de contraseña
+                if ($(this).attr('id') === 'password') {
+                    var password = $(this).val().trim();
 
-                        if (password === '') {
-                            $(this).removeClass('is-valid').addClass('is-invalid');
-                            $('#error-message').text('Debe ingresar una contraseña.');
-                        } else {
-                            $(this).removeClass('is-invalid').addClass('is-valid');
-                            $('#error-message').text('');
-                        }
+                    if (password === '') {
+                        $(this).removeClass('is-valid').addClass('is-invalid');
+                        $('#error-message').text('Debe ingresar una contraseña.');
+                    } else {
+                        $(this).removeClass('is-invalid').addClass('is-valid');
+                        $('#error-message').text('');
                     }
-                });
+                }
+            });
 
-                // Remover clases is-valid e is-invalid al cambiar el contenido del campo de entrada
-                $('#correo, #password').on('input', function() {
-                    $(this).removeClass('is-valid is-invalid');
-                    $('#error-message').text('');
-                });
+            // Remover clases is-valid e is-invalid al cambiar el contenido del campo de entrada
+            $('#correo, #password').on('input', function() {
+                $(this).removeClass('is-valid is-invalid');
+                $('#error-message').text('');
+            });
 
-                $('#iniciar_sesion').click(function(e) {
-                    $("#iniciar_sesion").html(`
+            $('#iniciar_sesion').click(function(e) {
+                $("#iniciar_sesion").html(`
                         <div class="spinner-grow spinner-grow-sm text-light" role="status">
                         </div>
                         <div class="spinner-grow spinner-grow-sm text-light" role="status">
@@ -116,74 +159,103 @@
                         </div>
                         <div class="spinner-grow spinner-grow-sm text-light" role="status">
                         </div>`)
-                    $('#error-message').text('').hide();
+                $('#error-message').text('').hide();
 
-                    e.preventDefault(); // Evitar el envío del formulario por defecto
+                e.preventDefault(); // Evitar el envío del formulario por defecto
 
-                    var correo = $('#correo').val().trim();
-                    var password = $('#password').val().trim();
+                var correo = $('#correo').val().trim();
+                var password = $('#password').val().trim();
 
-                    // Expresión regular para validar correo electrónico
-                    var correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                // Expresión regular para validar correo electrónico
+                var correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-                    // Validar correo electrónico
-                    if (!correoValido.test(correo)) {
-                        $('#correo').addClass('is-invalid');
-                        $('#error-message').text('Debe ingresar un correo electrónico válido.');
-                        $("#iniciar_sesion").html(`Inicar sesión`)
-                        return false;
-                    } else {
-                        $('#correo').removeClass('is-invalid').addClass('is-valid');
-                        $('#error-message').text('');
-                    }
+                // Validar correo electrónico
+                if (!correoValido.test(correo)) {
+                    $('#correo').addClass('is-invalid');
+                    $('#error-message').text('Debe ingresar un correo electrónico válido.');
+                    $("#iniciar_sesion").html(`Inicar sesión`)
+                    return false;
+                } else {
+                    $('#correo').removeClass('is-invalid').addClass('is-valid');
+                    $('#error-message').text('');
+                }
 
-                    // Validar contraseña
-                    if (password === '') {
-                        $('#password').addClass('is-invalid');
-                        $('#error-message').text('Debe ingresar una contraseña.');
-                        $("#iniciar_sesion").html(`Inicar sesión`)
-                        return false;
-                    } else {
-                        $('#password').removeClass('is-invalid').addClass('is-valid');
-                        $('#error-message').text('');
-                    }
+                // Validar contraseña
+                if (password === '') {
+                    $('#password').addClass('is-invalid');
+                    $('#error-message').text('Debe ingresar una contraseña.');
+                    $("#iniciar_sesion").html(`Inicar sesión`)
+                    return false;
+                } else {
+                    $('#password').removeClass('is-invalid').addClass('is-valid');
+                    $('#error-message').text('');
+                }
 
-                    // Enviar datos por AJAX
-                    $.ajax({
-                        url: 'validar-accesomasterclass',
-                        method: 'POST',
-                        data: {
-                            correo: correo,
-                            codigo: password
-                        },
-                        dataType: 'json', // Esperamos una respuesta JSON del servidor
-                        success: function(response) {
-                            // Manejar la respuesta del servidor
-                            console.log(response.error_code);
-                            // Si hay un error, mostrar mensaje de error
-                            if (response.code == "is_not_ok") {
-                                $('#error_login').text(response.error_message).show();
-                                $('#error_login').fadeOut(5000);
-                                $("#iniciar_sesion").html(`Inicar sesión`)
+                // Enviar datos por AJAX
+                $.ajax({
+                    url: 'validar-accesomasterclass',
+                    method: 'POST',
+                    data: {
+                        correo: correo,
+                        codigo: password
+                    },
+                    dataType: 'json', // Esperamos una respuesta JSON del servidor
+                    success: function(response) {
+                        // Manejar la respuesta del servidor
+                        if (response.acceso == 1) {
+                            let info = response.session;
+                            let docente = info.docente;
+                            let session = info.session;
+                            let titulo = info.titulo;
+                            let fecha = info.fecha;
+                            let hora = info.hora;
+                            let codigo_alumno = info.codigo_alumno;
 
+                            $("#info-titulo").html(titulo);
+                            $("#info-session").html(session);
+                            $("#info-docente").html(docente);
+                            $("#info-fecha").html(fecha);
+                            $("#info-hora").html(hora);
+                            $("#codigo_alumno").val(codigo_alumno);
+                            $("#datos-session").show();
+                            $("#iniciar_sesion").hide();
+                            $("#iniciar_meet").show();
 
-                            } else if (response.acceso) {
-                                // Esperar 5 segundos antes de redirigir
-                                $("#iniciar_sesion").html(`<i class="fa-solid fa-circle-check"></i> Usuario validado correctamente`);
-                                setTimeout(function() {
-                                    // Realizar la redirección después de 5 segundos
-                                    window.location.href = 'lista-alumnos';
-                                }, 2000); // 5000 milisegundos = 5 segundos
-
-                                // Si no hay error, redirigir o realizar otra acción
-                                window.location.href = 'sala/' + response.session;
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            // Manejar errores de la solicitud AJAX
-                            console.error(error);
+                        } else {
+                            alert("Accesos no disponible");
+                            $('#error_login').text(response.error_message).show();
+                            $('#error_login').fadeOut(5000);
+                            $("#iniciar_sesion").html(`Confirmar`);
                         }
-                    });
+                    },
+                    error: function(xhr, status, error) {
+                        // Manejar errores de la solicitud AJAX
+                        console.error(error);
+                    }
+                });
+            });
+
+
+            $('#iniciar_meet').on('click', function(e) {
+                let codigo_moderador = $("#password").val();
+                let codigo_alumno = $("#codigo_alumno").val();
+                let titulo = $("#info-titulo").text();
+                let session = $("#info-session").text();
+                let docente = $("#info-docente").text();
+                $.ajax({
+                    type: "POST",
+                    url: "crear-sala",
+                    data: {
+                        codigo_moderador,
+                        codigo_alumno,
+                        titulo,
+                        session,
+                        docente
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        window.location = response.url;
+                    }
                 });
             });
 
