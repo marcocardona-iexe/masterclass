@@ -26,6 +26,11 @@ class BigbluebuttonController extends CI_Controller
 
     public function __construct()
     {
+        // CORS headers
+        header('Access-Control-Allow-Origin: *'); // Permite todas las orígenes
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS'); // Métodos permitidos
+        header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Headers permitidos
+
         parent::__construct();
     }
 
