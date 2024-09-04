@@ -135,13 +135,30 @@ class BigbluebuttonController extends CI_Controller
             $checksum = sha1("joinfullName=" . urlencode($alumno) . "&meetingID=$meetId&password=$passwordUsuario&redirect=true" . $this->secret);
             $base_url = $this->url . "join?fullName=" . urlencode($alumno) . "&meetingID=$meetId&password=$passwordUsuario&redirect=true&checksum=" . $checksum;
 
+            // // Guardar el nombre del alumno en la base de datos
+            // $this->load->model('AlumnoModel');
+            // $data = array(
+            //     'nombre' => $alumno,
+            //     'session_id' => $meetId,
+            //     'fecha_unido' => date('Y-m-d H:i:s')
+            // );
+            // $this->AlumnoModel->guardarAlumno($data);
+
             // Devolver la URL de la reunión
-            echo json_encode(array('status' => "Ok", "url" => $base_url));
+            $response = array('status' => "success", 'url' => $base_url);
         } else {
             // Si la sala no está en ejecución, enviar un mensaje de error
-            echo json_encode(array('status' => "Error", "message" => "La sala aún no está disponible. Intente nuevamente más tarde."));
+            $response = array('status' => "error", 'message' => "La sala aún no está disponible. Intente nuevamente más tarde.");
         }
+
+        // Enviar la respuesta como JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response))
+            ->_display();
+        exit;
     }
+
 
     public function Optener_grabaciones()
     {

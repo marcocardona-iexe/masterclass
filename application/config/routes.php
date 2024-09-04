@@ -73,6 +73,7 @@ $route['sala/(:any)'] = 'MasterclasController/sala/$1';
 
 $route['crear-sala'] = "BigbluebuttonController/crear_sala";
 $route['get-session/(:any)'] = "MasterclasController/get_session/$1";
+$route['alumno-unirse'] = "BigbluebuttonController/alumno_unirse";
 
 
 $route['404_override'] = '';
