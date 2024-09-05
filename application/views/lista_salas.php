@@ -7,8 +7,8 @@
     <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:/ -->
     <!--[if lt IE 9]>
-    <script src="https:/oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:/oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <!-- Meta -->
@@ -24,7 +24,7 @@
     <link rel="icon" href="<?php echo base_url(); ?>assets/images/favicon.ico" type="image/x-icon">
 
     <!-- Google font-->
-    <link href="https:/fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
 
     <!-- themify -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/icon/themify-icons/themify-icons.css">
@@ -44,8 +44,8 @@
     <!-- Responsive.css-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/responsive.css">
 
-    <link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="https:/cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
 
 </head>
@@ -209,7 +209,7 @@
                 </a>
             </li>
             <li>
-                <a href="https:/www.mozilla.org/en-US/firefox/new/">
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
                     <img src="<?php echo base_url(); ?>assets/images/browser/firefox.png" alt="Firefox">
                     <div>Firefox</div>
                 </a>
@@ -221,7 +221,7 @@
                 </a>
             </li>
             <li>
-                <a href="https:/www.apple.com/safari/">
+                <a href="https://www.apple.com/safari/">
                     <img src="<?php echo base_url(); ?>assets/images/browser/safari.png" alt="Safari">
                     <div>Safari</div>
                 </a>
@@ -265,7 +265,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/pages/elements.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/menu.min.js"></script>
 
-    <script src="https:/cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#tbl_masterclass').DataTable();
