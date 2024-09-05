@@ -14,15 +14,23 @@ class MasterclasController extends CI_Controller
         $this->load->model("MasterclassModel");
     }
 
-    public function index()
-    {
-        $this->load->view("lista_masterclass");
-    }
-
     public function nueva_sesion()
     {
         $this->load->view("nueva_sesion");
     }
+
+
+
+    public function index()
+    {
+        $dataMasterclass = $this->MasterclassModel->getAll();
+        $data = array(
+            "masterclass" => $dataMasterclass
+        );
+        $this->load->view("lista_salas", $data);
+    }
+
+
 
     public function get_session($session)
     {
@@ -59,50 +67,7 @@ class MasterclasController extends CI_Controller
     }
 
 
-    public function acceso_alumno()
-    {
-        $codigo_alumno = 'R2120O2V';
-        $nombre_alumno = "Raul Sandoval";
-        $matricula = "MCDA24C001";
-        $dataSesion = $this->MasterclassModel->getByCodigoAlumno($codigo_alumno);
 
-
-        $data['masterclass'] = $dataSesion;
-
-
-        $fecha_sesion = $dataSesion->fecha;
-        $hora_sesion = $dataSesion->hora;
-
-
-        //Validamos que sea la fecha actual
-        if ($fecha_sesion == date("Y-m-d")) {
-            // Combina la fecha y la hora en una sola cadena
-            $fecha_hora_sesion = $fecha_sesion . ' ' . $hora_sesion;
-
-            // Crea un objeto DateTime para la fecha y hora de la sesión
-            $datetime_sesion = new DateTime($fecha_hora_sesion);
-
-            // Crea un objeto DateTime para la fecha y hora actual
-            $datetime_actual = new DateTime();
-
-            // Compara las fechas y horas
-            if ($datetime_sesion >= $datetime_actual) {
-                // La fecha y hora de la sesión son mayores o iguales a la fecha y hora actual
-                $is_valid = 1;
-            } else {
-                // La fecha y hora de la sesión son menores a la fecha y hora actual
-                $is_valid = 0;
-            }
-
-            $data['is_valid'] = $is_valid;
-        } else {
-            echo false;
-        }
-
-        $data['alumno'] = $nombre_alumno;
-        $data['matricula'] = $matricula;
-        $this->load->view("acceso_alumno", $data);
-    }
 
     public function agregar_masterclass()
     {
@@ -123,15 +88,13 @@ class MasterclasController extends CI_Controller
             $uploadData = $this->upload->data();
 
             // Ruta del archivo que se guardará en la base de datos
-            $imagePath = 'assets/images/bannes_masterclass/' . $uploadData['file_name'];
+            $imagePath = base_url() . 'assets/images/bannes_masterclass/' . $uploadData['file_name'];
 
             // Obtener datos del formulario y añadir la ruta de la imagen
             $dataInsert = $this->input->post();
             $dataInsert['imagen'] = $imagePath;
             $dataInsert['status'] = 1;
             $dataInsert['session'] = $dataInsert['tipo'] . "-" . date('YmdHi');
-            $dataInsert['acceso_docente'] = 'http://127.0.0.1/masterclass/acceso-docente';
-            $dataInsert['acceso_alumno'] = 'http://127.0.0.1/masterclass/acceso-alumno/' . $dataInsert['session'];
 
             // Intentar guardar los datos en la base de datos
             if ($this->MasterclassModel->create($dataInsert)) {
@@ -144,14 +107,7 @@ class MasterclasController extends CI_Controller
         }
     }
 
-    public function sala($session)
-    {
-        $dataMasterclass = $this->MasterclassModel->getBySession($session);
-        $data = array(
-            "masterclass" => $dataMasterclass
-        );
-        $this->load->view("informacion_sala", $data);
-    }
+
 
     public function acceso_docente()
     {
@@ -162,15 +118,29 @@ class MasterclasController extends CI_Controller
     {
         $data = $this->input->post();
 
-        $session = $this->MasterclassModel->getByAccesoDocente($data['correo'], $data['codigo']);
+        // Primero, verificar si el correo pertenece a un docente
+        $session = $this->MasterclassModel->getByAccesoDocenteCodigo($data['correo'], $data['codigo']);
+
         if ($session) {
-            // La sesión existe, realizar alguna acción con la sesión
-            // Ejemplo: cargar una vista con la sesión o redirigir al usuario
             echo json_encode(["acceso" => 1, "session" => $session]);
+            return;
+        }
+
+        // Si no es un docente, verificar si el correo existe en la tabla de TI
+        $existeTi = $this->MasterclassModel->getByAccesoTi($data['correo']);
+        if ($existeTi) {
+            // Verificar si el código está asociado a un docente
+            $session = $this->MasterclassModel->getByAccesoCodigoDocente($data['codigo']);
+            if ($session) {
+                echo json_encode(["acceso" => 1, "session" => $session]);
+            } else {
+                echo json_encode(["acceso" => 0, "mensaje" => "Acceso denegado. No se encontró la sesión."]);
+            }
         } else {
-            echo json_encode(["acceso" => 0, "mesage" => "Acceso denegado. No se encontró la sesión."]);
+            echo json_encode(["acceso" => 0, "mensaje" => "Acceso denegado. Correo no encontrado."]);
         }
     }
+
 
     public function verifica_codigo_docente($codigo_moderador)
     {

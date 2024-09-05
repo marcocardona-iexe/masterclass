@@ -44,9 +44,17 @@
     <!-- Responsive.css-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//css/responsive.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
 
 </head>
+<style>
+    #tbl_masterclass thead,
+    #tbl_masterclass tbody {
+        font-size: 12px;
+    }
+</style>
 
 <body class="sidebar-mini fixed">
     <div class="wrapper">
@@ -116,7 +124,7 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="#!">Masterclass</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="sample-page.html">Lista</a>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Lista</a>
                                 </li>
                             </ol>
                         </div>
@@ -129,33 +137,46 @@
                             <div class="card-block">
                                 <div class="md-card-block">
                                     <div class="col-md-12 text-right" style="padding-bottom: 15px;">
-                                        <button class="btn btn-success" onclick="window.location='<?php echo base_url();?>masterclass/nueva-masterclass'">Nueva</button>
+                                        <button class="btn btn-success" onclick="window.location='<?php echo base_url(); ?>nueva-sesion'">Nueva</button>
                                     </div>
                                     <div class="col-md-12">
-                                        <table class="table table-striped table-bordered table-hover table-sm">
+                                        <table class="table table-striped table-bordered table-hover table-sm" id="tbl_masterclass">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>No</th>
-                                                    <th>Nombre</th>
-                                                    <th>Autor</th>
+                                                    <th>Título</th>
+                                                    <th>Docente</th>
+                                                    <th>Sala</th>
+                                                    <th>Tipo</th>
+
                                                     <th>Fecha</th>
-                                                    <th>Link</th>
+                                                    <th>Hora</th>
                                                     <th>Clave del moderador</th>
                                                     <th>Clave del alumno</th>
+                                                    <th>Status</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Dato 1.1</td>
-                                                    <td>Dato 1.2</td>
-                                                    <td>Dato 1.3</td>
-                                                    <td>Dato 1.4</td>
-                                                    <td>Dato 1.5</td>
-                                                    <td>Dato 1.6</td>
-                                                    <td>Dato 1.7</td>
-                                                </tr>
+                                                <?php $a = 1;
+                                                foreach ($masterclass as $m) { ?>
+                                                    <tr>
+                                                        <td><?php echo $a; ?></td>
+                                                        <td><?php echo $m->titulo; ?></td>
+                                                        <td><?php echo $m->docente; ?></td>
+                                                        <td><?php echo $m->session; ?></td>
+                                                        <td><?php echo $m->tipo; ?></td>
+
+                                                        <td><?php echo $m->fecha; ?></td>
+                                                        <td><?php echo $m->hora; ?></td>
+                                                        <td><?php echo $m->codigo_docente; ?></td>
+                                                        <td><?php echo $m->codigo_alumno; ?></td>
+                                                        <td><?php echo ($m->status == 1) ? 'Activo' : 'Inactivo'; ?></td>
+                                                        <th><i class="fa-solid fa-trash"></i></th>
+
+                                                    </tr>
+                                                <?php $a++;
+                                                } ?>
                                                 <!-- Puedes añadir más filas según sea necesario -->
                                             </tbody>
                                         </table>
@@ -243,6 +264,13 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>assets//js/main.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets//pages/elements.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets//js/menu.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tbl_masterclass').DataTable();
+        });
+    </script>
 
 </body>
 

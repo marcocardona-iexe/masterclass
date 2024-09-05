@@ -95,7 +95,7 @@
                 <ul class="sidebar-menu">
                     <li class="nav-level">--- Masterclass</li>
                     <li class="treeview">
-                        <a class="waves-effect waves-dark" href="index.html">
+                        <a class="waves-effect waves-dark" href="<?php echo base_url(); ?>">
                             <i class="icon-speedometer"></i><span> Lista de Masterclass</span>
                         </a>
                     </li>
@@ -115,9 +115,9 @@
                             <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                                 <li class="breadcrumb-item"><a href="index.html"><i class="icofont icofont-home"></i></a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#!">Masterclass</a>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Sesiones</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="sample-page.html">Nueva</a>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>nueva-sesion">Nueva</a>
                                 </li>
                             </ol>
                         </div>
@@ -392,40 +392,37 @@
         });
 
 
+        // Al enviar el formulario con id 'registroForm'
         $('#registroForm').on('submit', function(e) {
+            // Previene el comportamiento por defecto del formulario (que es enviar la solicitud al servidor y recargar la página)
             e.preventDefault();
 
-            // Validar que todos los campos estén completos
-            var valid = true;
-
-            $('#registroForm input').each(function() {
-                if ($(this).val() === '') {
-                    $(this).addClass('is-invalid').removeClass('is-valid');
-                    valid = false;
-                } else {
-                    $(this).addClass('is-valid').removeClass('is-invalid');
-                }
-            });
-
-            if (!valid) {
-                return false;
-            }
-
-            // Realizar el envío del formulario con AJAX
+            // Crear un objeto FormData con los datos del formulario
             var formData = new FormData(this);
+
+            // Realizar una solicitud AJAX para enviar el formulario
             $.ajax({
-                url: 'agregar-masterclass', // Cambia esta URL a la de tu servidor
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
+                url: 'agregar-masterclass', // URL del servidor donde se enviarán los datos del formulario
+                type: 'POST', // Método HTTP para enviar los datos
+                data: formData, // Datos del formulario en formato FormData
+                contentType: false, // Indica que no se debe establecer el tipo de contenido (el navegador lo hace automáticamente con FormData)
+                processData: false, // Indica que no se debe procesar los datos (el navegador lo hace automáticamente con FormData)
                 success: function(response) {
+                    // Esta función se ejecuta si la solicitud se completa con éxito
+
+                    // Muestra un mensaje de alerta indicando que el formulario se ha enviado con éxito
                     alert('Formulario enviado con éxito.');
-                    // Aquí puedes agregar más lógica de éxito si lo necesitas
+
+                    // Recarga la página para reflejar cualquier cambio realizado en el servidor
+                    location.reload();
                 },
                 error: function(xhr, status, error) {
+                    // Esta función se ejecuta si ocurre un error durante la solicitud
+
+                    // Muestra un mensaje de alerta indicando que hubo un error al enviar el formulario
                     alert('Error al enviar el formulario.');
-                    // Aquí puedes manejar errores de manera más específica si es necesario
+
+                    // Aquí se puede agregar lógica adicional para manejar errores específicos si es necesario
                 }
             });
         });

@@ -24,7 +24,36 @@ class MasterclassModel extends CI_Model
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
 
-    public function getByAccesoDocente($correo, $codigo_docente)
+    public function getByAccesoCodigoDocente($codigo)
+    {
+        $query = $this->db->get_where($this->table, ['codigo_docente' => $codigo]);
+
+        // Verifica si se encontró al menos un resultado
+        if ($query->num_rows() > 0) {
+            // Retorna el campo 'session' del primer resultado
+
+            return $query->row();
+        } else {
+            return false;
+        }
+    }
+
+    public function getByAccesoTi($correoTi)
+    {
+        $query = $this->db->get_where('moderadores_ti', ['correo' => $correoTi]);
+
+        // Verifica si se encontró al menos un resultado
+        if ($query->num_rows() > 0) {
+            // Retorna el campo 'session' del primer resultado
+
+            return $query->row();
+        } else {
+            return false;
+        }
+    }
+
+
+    public function getByAccesoDocenteCodigo($correo, $codigo_docente)
     {
         $query = $this->db->get_where($this->table, ['correo_docente' => $correo, "codigo_docente" => $codigo_docente]);
 
@@ -37,6 +66,7 @@ class MasterclassModel extends CI_Model
             return false;
         }
     }
+
     public function verifica_codigo_docente($codigo_docente)
     {
         $query = $this->db->get_where($this->table, ["codigo_docente" => $codigo_docente]);
