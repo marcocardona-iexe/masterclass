@@ -5,10 +5,10 @@
     <title>Quantum Able Bootstrap 4 Admin Dashboard Template</title>
 
     <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:/ -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https:/oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https:/oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <!-- Meta -->
@@ -20,32 +20,32 @@
     <meta name="author" content="codedthemes">
 
     <!-- Favicon icon -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets//images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="<?php echo base_url(); ?>assets//images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url(); ?>assets/images/favicon.ico" type="image/x-icon">
 
     <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
+    <link href="https:/fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
 
     <!-- themify -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/icon/themify-icons/themify-icons.css">
 
     <!-- iconfont -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//icon/icofont/css/icofont.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/icon/icofont/css/icofont.css">
 
     <!-- simple line icon -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//icon/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/icon/simple-line-icons/css/simple-line-icons.css">
 
     <!-- Required Fremwork -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/plugins/bootstrap/css/bootstrap.min.css">
 
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/main.css">
 
     <!-- Responsive.css-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets//css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/responsive.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https:/cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
 
 </head>
@@ -64,7 +64,7 @@
         </div>
         <!-- Navbar-->
         <header class="main-header-top hidden-print">
-            <a href="index.html" class="logo"><img class="img-fluid able-logo" src="<?php echo base_url(); ?>assets//images/logo.png" alt="Theme-logo"></a>
+            <a href="index.html" class="logo"><img class="img-fluid able-logo" src="<?php echo base_url(); ?>assets/images/logo.png" alt="Theme-logo"></a>
             <nav class="navbar navbar-static-top">
                 <!-- Sidebar toggle button-->
                 <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
@@ -74,7 +74,7 @@
                         <!-- User Menu-->
                         <li class="dropdown">
                             <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
-                                <span><img class="img-circle " src="<?php echo base_url(); ?>assets//images/avatar-1.png" style="width:40px;" alt="User Image"></span>
+                                <span><img class="img-circle " src="<?php echo base_url(); ?>assets/images/avatar-1.png" style="width:40px;" alt="User Image"></span>
                                 <span>Raul <b>Sandoval</b> <i class=" icofont icofont-simple-down"></i></span>
 
                             </a>
@@ -203,32 +203,32 @@
     <div class="iew-container">
         <ul class="iew-download">
             <li>
-                <a href="http://www.google.com/chrome/">
-                    <img src="<?php echo base_url(); ?>assets//images/browser/chrome.png" alt="Chrome">
+                <a href="http:/www.google.com/chrome/">
+                    <img src="<?php echo base_url(); ?>assets/images/browser/chrome.png" alt="Chrome">
                     <div>Chrome</div>
                 </a>
             </li>
             <li>
-                <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="<?php echo base_url(); ?>assets//images/browser/firefox.png" alt="Firefox">
+                <a href="https:/www.mozilla.org/en-US/firefox/new/">
+                    <img src="<?php echo base_url(); ?>assets/images/browser/firefox.png" alt="Firefox">
                     <div>Firefox</div>
                 </a>
             </li>
             <li>
-                <a href="http://www.opera.com">
-                    <img src="<?php echo base_url(); ?>assets//images/browser/opera.png" alt="Opera">
+                <a href="http:/www.opera.com">
+                    <img src="<?php echo base_url(); ?>assets/images/browser/opera.png" alt="Opera">
                     <div>Opera</div>
                 </a>
             </li>
             <li>
-                <a href="https://www.apple.com/safari/">
-                    <img src="<?php echo base_url(); ?>assets//images/browser/safari.png" alt="Safari">
+                <a href="https:/www.apple.com/safari/">
+                    <img src="<?php echo base_url(); ?>assets/images/browser/safari.png" alt="Safari">
                     <div>Safari</div>
                 </a>
             </li>
             <li>
-                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="<?php echo base_url(); ?>assets//images/browser/ie.png" alt="">
+                <a href="http:/windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="<?php echo base_url(); ?>assets/images/browser/ie.png" alt="">
                     <div>IE (9 & above)</div>
                 </a>
             </li>
@@ -240,32 +240,32 @@
     <!-- Warning Section Ends -->
 
     <!-- Required Jqurey -->
-    <script src="<?php echo base_url(); ?>assets//plugins/jquery/dist/jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets//plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets//plugins/tether/dist/js/tether.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/tether/dist/js/tether.min.js"></script>
 
     <!-- Required Fremwork -->
-    <script src="<?php echo base_url(); ?>assets//plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- waves effects.js -->
-    <script src="<?php echo base_url(); ?>assets//plugins/Waves/waves.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/Waves/waves.min.js"></script>
 
     <!-- Scrollbar JS-->
-    <script src="<?php echo base_url(); ?>assets//plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <script src="<?php echo base_url(); ?>assets//plugins/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js"></script>
 
     <!--classic JS-->
-    <script src="<?php echo base_url(); ?>assets//plugins/classie/classie.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/classie/classie.js"></script>
 
     <!-- notification -->
-    <script src="<?php echo base_url(); ?>assets//plugins/notification/js/bootstrap-growl.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/notification/js/bootstrap-growl.min.js"></script>
 
     <!-- custom js -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets//js/main.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets//pages/elements.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets//js/menu.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/pages/elements.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/menu.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https:/cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#tbl_masterclass').DataTable();
