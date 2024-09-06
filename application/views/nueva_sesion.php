@@ -20,8 +20,8 @@
     <meta name="author" content="codedthemes">
 
     <!-- Favicon icon -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets//images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="<?php echo base_url(); ?>assets//images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.iexe.edu.mx/wp-content/themes/iexe-unicorn/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.iexe.edu.mx/wp-content/themes/iexe-unicorn/assets/img/favicon-16x16.png">
 
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">

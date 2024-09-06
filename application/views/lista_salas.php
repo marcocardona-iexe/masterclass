@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Quantum Able Bootstrap 4 Admin Dashboard Template</title>
+    <title>Masterclass Iexe</title>
 
     <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:/ -->
@@ -20,8 +20,8 @@
     <meta name="author" content="codedthemes">
 
     <!-- Favicon icon -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="<?php echo base_url(); ?>assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.iexe.edu.mx/wp-content/themes/iexe-unicorn/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.iexe.edu.mx/wp-content/themes/iexe-unicorn/assets/img/favicon-16x16.png">
 
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
@@ -46,7 +46,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-
 
 </head>
 <style>
