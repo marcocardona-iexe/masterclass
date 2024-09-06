@@ -62,9 +62,9 @@
             </div>
         </div>
         <!-- Navbar-->
-        <header class="main-header-top hidden-print">
-            <a href="index.html" class="logo"><img class="img-fluid able-logo" src="<?php echo base_url(); ?>assets/images/logo.png" alt="Theme-logo"></a>
-            <nav class="navbar navbar-static-top">
+        <header class="main-header-top hidden-print" style="background: #001e42;">
+            <a href="index.html" class="logo"><img class="img-fluid able-logo" src="https://app.iexe.edu.mx/seguimiento/assets/img/logo_iexe.webp" alt="Theme-logo"></a>
+            <nav class="navbar navbar-static-top" style="background: #001e42;">
                 <!-- Sidebar toggle button-->
                 <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
                 <!-- Navbar Right Menu-->
