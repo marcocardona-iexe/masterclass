@@ -95,7 +95,7 @@ class SesionesController extends CI_Controller
             $uploadData = $this->upload->data();
 
             // Ruta del archivo que se guardará en la base de datos
-            $imagePath = base_url() . 'assets/images/bannes_sesiones/' . $uploadData['file_name'];
+            $imagePath = base_url() . 'assets/images/banners_sesiones/' . $uploadData['file_name'];
 
             // Obtener datos del formulario y añadir la ruta de la imagen
             $dataInsert = $this->input->post();
