@@ -110,14 +110,14 @@ class BigbluebuttonController extends CI_Controller
 
             if ($xml->returncode == 'SUCCESS') {
                 // Sala creada exitosamente, actualizar la sesión y unirse
-                $internalMeetingID = (string) $xml->internalMeetingID;
-                $this->SesionesModel->update($idSesion, ['internalMeetingID' => $internalMeetingID]);
+                // $internalMeetingID = (string) $xml->internalMeetingID;
+                // $this->SesionesModel->update($idSesion, ['internalMeetingID' => $internalMeetingID]);
                 $meet = $this->docente_unirse($session, $codigo_moderador, $docente);
                 echo json_encode(['status' => "Ok", 'url' => $meet]);
             } elseif ($xml->messageKey == 'idNotUnique') {
                 // El ID de la reunión ya existe, actualizar y unirse
-                $internalMeetingID = (string) $xml->internalMeetingID;
-                $this->SesionesModel->update($idSesion, ['internalMeetingID' => $internalMeetingID]);
+                // $internalMeetingID = (string) $xml->internalMeetingID;
+                // $this->SesionesModel->update($idSesion, ['internalMeetingID' => $internalMeetingID]);
                 $meet = $this->docente_unirse($session, $codigo_moderador, $docente);
                 echo json_encode(['status' => "Ok", 'url' => $meet]);
             } else {
@@ -148,7 +148,6 @@ class BigbluebuttonController extends CI_Controller
         $matricula = $this->input->post('matricula'); // Nombre del alumno
 
 
-
         // Verificar si la sala está en ejecución
         if ($this->is_meeting_running($meetId)) {
             // Generar la URL para unirse a la sala si ya está en ejecución
@@ -162,6 +161,8 @@ class BigbluebuttonController extends CI_Controller
                 'nombre' => $alumno,
                 'session' => $meetId,
             );
+
+            
             $this->AsistenciasModel->insert($data);
 
             // Devolver la URL de la reunión
