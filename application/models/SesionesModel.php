@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class MasterclassModel extends CI_Model
+class SesionesModel extends CI_Model
 {
 
-    private $table = "masterclass";
+    private $table = "sesiones";
 
     public function __construct()
     {
@@ -38,19 +38,7 @@ class MasterclassModel extends CI_Model
         }
     }
 
-    public function getByAccesoTi($correoTi)
-    {
-        $query = $this->db->get_where('moderadores_ti', ['correo' => $correoTi]);
 
-        // Verifica si se encontró al menos un resultado
-        if ($query->num_rows() > 0) {
-            // Retorna el campo 'session' del primer resultado
-
-            return $query->row();
-        } else {
-            return false;
-        }
-    }
 
 
     public function getByAccesoDocenteCodigo($correo, $codigo_docente)

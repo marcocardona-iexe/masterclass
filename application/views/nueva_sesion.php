@@ -402,7 +402,7 @@
 
             // Realizar una solicitud AJAX para enviar el formulario
             $.ajax({
-                url: 'agregar-masterclass', // URL del servidor donde se enviarán los datos del formulario
+                url: 'agregar-sesion', // URL del servidor donde se enviarán los datos del formulario
                 type: 'POST', // Método HTTP para enviar los datos
                 data: formData, // Datos del formulario en formato FormData
                 contentType: false, // Indica que no se debe establecer el tipo de contenido (el navegador lo hace automáticamente con FormData)

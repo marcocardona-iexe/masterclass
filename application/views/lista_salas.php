@@ -123,7 +123,7 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="#!">Masterclass</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Lista</a>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Lista</a>
                                 </li>
                             </ol>
                         </div>
@@ -158,7 +158,7 @@
                                             </thead>
                                             <tbody>
                                                 <?php $a = 1;
-                                                foreach ($masterclass as $m) { ?>
+                                                foreach ($sesiones as $m) { ?>
                                                     <tr>
                                                         <td><?php echo $a; ?></td>
                                                         <td><?php echo $m->titulo; ?></td>
@@ -266,10 +266,45 @@
 
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script>
+        // Definir la función fuera de $(document).ready para que sea accesible globalmente
+        function ver_grabaciones(session, internalMeetingID) {
+            // Lógica que se ejecutará al hacer clic en una sesión
+            //alert("Viendo grabaciones para la sesión: " + session);
+
+            // Aquí puedes agregar la lógica para hacer una solicitud AJAX o redirigir a otra página
+
+            $.ajax({
+                url: 'ver-grabacion', // Cambia esto por la URL en tu servidor
+                type: 'POST',
+                data: {
+                    meetingID: session,
+                    internalMeetingID: internalMeetingID
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        var grabaciones = response.data;
+
+                        // Mostrar las grabaciones en la página
+                        grabaciones.forEach(function(grabacion) {
+                            console.log("Grabación encontrada: ", grabacion);
+                            // Aquí puedes crear un enlace o mostrar más información
+                        });
+                    } else {
+                        //alert(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error al obtener grabaciones:", error);
+                }
+            });
+
+        }
+
         $(document).ready(function() {
             $('#tbl_masterclass').DataTable();
         });
     </script>
+
 
 </body>
 

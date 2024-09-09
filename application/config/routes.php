@@ -49,33 +49,38 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'MasterclasController/index';
-$route['nueva-sesion'] = 'MasterclasController/nueva_sesion';
+$route['default_controller'] = 'SesionesController/index';
+$route['nueva-sesion'] = 'SesionesController/nueva_sesion';
 
 
 
 
 #Rutas para agregar una nueva sesion
-$route['agregar-masterclass'] = 'MasterclasController/agregar_masterclass';
-$route['verifica-codigo-docente/(:any)'] = 'MasterclasController/verifica_codigo_docente/$1';
-$route['verifica-codigo-alumno/(:any)'] = 'MasterclasController/verifica_codigo_alumno/$1';
+$route['agregar-sesion'] = 'SesionesController/agregar_sesion';
+$route['verifica-codigo-docente/(:any)'] = 'SesionesController/verifica_codigo_docente/$1';
+$route['verifica-codigo-alumno/(:any)'] = 'SesionesController/verifica_codigo_alumno/$1';
 #############################################################################################################
 
 
 #Modulo del login
-$route['acceso-docente'] = 'MasterclasController/acceso_docente';
-$route['validar-accesomasterclass'] = 'MasterclasController/validar_accesomasterclass';
+$route['acceso-docente'] = 'SesionesController/acceso_docente';
+$route['validar-acceso-sesion'] = 'SesionesController/validar_acceso_sesion';
 ##############################################################################################################
 
 
 
 #Info para modulos en plataformas
-$route['get-session/(:any)'] = "MasterclasController/get_session/$1";
+$route['get-session/(:any)'] = "SesionesController/get_session/$1";
 
 #Unirse a la sesion el alumno
 $route['alumno-unirse'] = "BigbluebuttonController/alumno_unirse";
 #Crear sala 
 $route['crear-sala'] = "BigbluebuttonController/crear_sala";
+
+#Ver grabacion
+$route['ver-grabacion'] = "BigbluebuttonController/ver_grabacion";
+
+
 
 
 

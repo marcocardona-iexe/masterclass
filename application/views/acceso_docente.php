@@ -72,8 +72,10 @@
                                                 <div class="col-sm-12" id="info-hora"></div>
                                                 <input id="hora_inicio" value="" hidden>
                                             </div>
+
                                             <div class="row">
                                                 <input id="codigo_alumno" value="" hidden>
+                                                <input id="idSesion" value="" hidden>
                                             </div>
                                         </div>
                                     </div>
@@ -193,7 +195,7 @@
 
                 // Enviar datos por AJAX
                 $.ajax({
-                    url: 'validar-accesomasterclass',
+                    url: 'validar-acceso-sesion',
                     method: 'POST',
                     data: {
                         correo: correo,
@@ -204,12 +206,13 @@
                         // Manejar la respuesta del servidor
                         if (response.acceso == 1) {
                             let info = response.session;
-                            let docente = info.docente;
+                            let docente = (response.admin == 1) ? response.moderador : info.docente;
                             let session = info.session;
                             let titulo = info.titulo;
                             let fecha = info.fecha;
                             let hora = info.hora;
                             let codigo_alumno = info.codigo_alumno;
+                            let idSesion = info.id;
 
                             $("#info-titulo").html(titulo);
                             $("#info-session").html(session);
@@ -220,6 +223,7 @@
                             $("#datos-session").show();
                             $("#iniciar_sesion").hide();
                             $("#iniciar_meet").show();
+                            $("#idSesion").val(idSesion);
 
                         } else {
                             alert("Accesos no disponible");
@@ -242,6 +246,7 @@
                 let titulo = $("#info-titulo").text();
                 let session = $("#info-session").text();
                 let docente = $("#info-docente").text();
+                let idSesion = $("#idSesion").val();
                 $.ajax({
                     type: "POST",
                     url: "crear-sala",
@@ -250,7 +255,8 @@
                         codigo_alumno,
                         titulo,
                         session,
-                        docente
+                        docente,
+                        idSesion
                     },
                     dataType: "json",
                     success: function(response) {

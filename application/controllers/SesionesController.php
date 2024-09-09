@@ -4,14 +4,15 @@ date_default_timezone_set('America/Mexico_City');
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class MasterclasController extends CI_Controller
+class SesionesController extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model("MasterclassModel");
+        $this->load->model("SesionesModel");
+        $this->load->model("UsuariosModel");
     }
 
     public function nueva_sesion()
@@ -23,9 +24,15 @@ class MasterclasController extends CI_Controller
 
     public function index()
     {
-        $dataMasterclass = $this->MasterclassModel->getAll();
+        $datasesiones = $this->SesionesModel->getAll();
+        foreach ($datasesiones as $s) {
+            if (!empty($s->internalMeetingID)) {  // Verifica si internalMeetingID no está vacío o nulo
+                // Corrige la etiqueta de cierre y asegura que el evento onclick esté bien formado
+                $s->session = "<a href='#' onclick='ver_grabaciones(\"{$s->session}\", \"{$s->internalMeetingID}\")'>" . $s->session . "</a>";
+            }
+        }
         $data = array(
-            "masterclass" => $dataMasterclass
+            "sesiones" => $datasesiones
         );
         $this->load->view("lista_salas", $data);
     }
@@ -35,7 +42,7 @@ class MasterclasController extends CI_Controller
     public function get_session($session)
     {
         // Obtener los datos de la sesión
-        $dataSession = $this->MasterclassModel->getBySession($session);
+        $dataSession = $this->SesionesModel->getBySession($session);
 
         if ($dataSession) {
             // Crear el array de respuesta
@@ -69,10 +76,10 @@ class MasterclasController extends CI_Controller
 
 
 
-    public function agregar_masterclass()
+    public function agregar_sesion()
     {
         // Configuración de carga de imagen
-        $config['upload_path'] = './assets/images/bannes_masterclass/'; // Directorio donde se almacenará la imagen
+        $config['upload_path'] = './assets/images/bannes_sesiones/'; // Directorio donde se almacenará la imagen
         $config['allowed_types'] = 'jpg|jpeg|png'; // Tipos de archivos permitidos
         $config['max_size'] = 2048; // Tamaño máximo del archivo en kilobytes (2MB)
 
@@ -88,7 +95,7 @@ class MasterclasController extends CI_Controller
             $uploadData = $this->upload->data();
 
             // Ruta del archivo que se guardará en la base de datos
-            $imagePath = base_url() . 'assets/images/bannes_masterclass/' . $uploadData['file_name'];
+            $imagePath = base_url() . 'assets/images/bannes_sesiones/' . $uploadData['file_name'];
 
             // Obtener datos del formulario y añadir la ruta de la imagen
             $dataInsert = $this->input->post();
@@ -97,7 +104,7 @@ class MasterclasController extends CI_Controller
             $dataInsert['session'] = $dataInsert['tipo'] . "-" . date('YmdHi');
 
             // Intentar guardar los datos en la base de datos
-            if ($this->MasterclassModel->create($dataInsert)) {
+            if ($this->SesionesModel->create($dataInsert)) {
                 // Respuesta de éxito en JSON
                 echo json_encode(array('status' => 'success', 'message' => 'Datos guardados correctamente.'));
             } else {
@@ -114,25 +121,24 @@ class MasterclasController extends CI_Controller
         $this->load->view("acceso_docente");
     }
 
-    public function validar_accesomasterclass()
+    public function validar_acceso_sesion()
     {
         $data = $this->input->post();
 
         // Primero, verificar si el correo pertenece a un docente
-        $session = $this->MasterclassModel->getByAccesoDocenteCodigo($data['correo'], $data['codigo']);
-
+        $session = $this->SesionesModel->getByAccesoDocenteCodigo($data['correo'], $data['codigo']);
         if ($session) {
-            echo json_encode(["acceso" => 1, "session" => $session]);
+            echo json_encode(["acceso" => 1, "session" => $session, "admin" => 0]);
             return;
         }
 
-        // Si no es un docente, verificar si el correo existe en la tabla de TI
-        $existeTi = $this->MasterclassModel->getByAccesoTi($data['correo']);
-        if ($existeTi) {
+        // Si no es un docente, verificar si el correo existe en la tabla de TI 
+        $existeAdmin = $this->UsuariosModel->getByCorreo($data['correo']);
+        if ($existeAdmin) {
             // Verificar si el código está asociado a un docente
-            $session = $this->MasterclassModel->getByAccesoCodigoDocente($data['codigo']);
+            $session = $this->SesionesModel->getByAccesoCodigoDocente($data['codigo']);
             if ($session) {
-                echo json_encode(["acceso" => 1, "session" => $session]);
+                echo json_encode(["acceso" => 1, "session" => $session, "admin" => 1, "moderador" => $existeAdmin->nombre]);
             } else {
                 echo json_encode(["acceso" => 0, "mensaje" => "Acceso denegado. No se encontró la sesión."]);
             }
@@ -144,13 +150,13 @@ class MasterclasController extends CI_Controller
 
     public function verifica_codigo_docente($codigo_moderador)
     {
-        $response = $this->MasterclassModel->verifica_codigo_docente($codigo_moderador);
+        $response = $this->SesionesModel->verifica_codigo_docente($codigo_moderador);
         echo json_encode(["existe" => $response]);
     }
 
     public function verifica_codigo_alumno($codigo_alumno)
     {
-        $response = $this->MasterclassModel->verifica_codigo_alumno($codigo_alumno);
+        $response = $this->SesionesModel->verifica_codigo_alumno($codigo_alumno);
         echo json_encode(["existe" => $response]);
     }
 }
