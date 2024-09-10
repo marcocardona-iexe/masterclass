@@ -26,10 +26,10 @@ class SesionesController extends CI_Controller
     {
         $datasesiones = $this->SesionesModel->getAll();
         foreach ($datasesiones as $s) {
-            if (!empty($s->internalMeetingID)) {  // Verifica si internalMeetingID no está vacío o nulo
-                // Corrige la etiqueta de cierre y asegura que el evento onclick esté bien formado
-                $s->session = "<a href='#' onclick='ver_grabaciones(\"{$s->session}\", \"{$s->internalMeetingID}\")'>" . $s->session . "</a>";
-            }
+            //if (!empty($s->internalMeetingID)) {  // Verifica si internalMeetingID no está vacío o nulo
+            // Corrige la etiqueta de cierre y asegura que el evento onclick esté bien formado
+            $s->session = "<a href='#' onclick='ver_grabaciones(\"{$s->session}\", \"{$s->internalMeetingID}\")'>" . $s->session . "</a>";
+            //}
         }
         $data = array(
             "sesiones" => $datasesiones
