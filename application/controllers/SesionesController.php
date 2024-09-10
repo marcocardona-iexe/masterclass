@@ -40,7 +40,8 @@ class SesionesController extends CI_Controller
 
     public function get_talleres()
     {
-        $dataTaller = $this->SesionesModel->getAll();
+        $dataTaller = $this->SesionesModel->get_talleres_fecha_anterior(date('Y-m-d'));
+
         // Configurar la respuesta HTTP adecuada
         $response = array(
             "status" => "success",

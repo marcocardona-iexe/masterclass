@@ -39,6 +39,22 @@ class SesionesModel extends CI_Model
     }
 
 
+    public function get_talleres_fecha_anterior($fecha)
+    {
+        // Se utiliza 'where' con el operador '<'
+        $this->db->where('fecha <', $fecha);
+        $query = $this->db->get($this->table);
+
+        // Verifica si se encontró al menos un resultado
+        if ($query->num_rows() > 0) {
+            // Retorna el primer resultado completo (puedes especificar un campo si es necesario)
+            return $query->result(); // o $query->row() si solo esperas un único registro
+        } else {
+            return false;
+        }
+    }
+
+
 
 
     public function getByAccesoDocenteCodigo($correo, $codigo_docente)
