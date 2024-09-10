@@ -82,7 +82,7 @@ $route['ver-grabacion'] = "BigbluebuttonController/ver_grabacion";
 
 
 $route['get-talleres'] = "SesionesController/get_talleres";
-
+$route['get-video-taller/(:any)'] = "BigbluebuttonController/get_video_taller/$1";
 
 
 $route['404_override'] = '';

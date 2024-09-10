@@ -162,7 +162,7 @@ class BigbluebuttonController extends CI_Controller
                 'session' => $meetId,
             );
 
-            
+
             $this->AsistenciasModel->insert($data);
 
             // Devolver la URL de la reunión
@@ -248,6 +248,100 @@ class BigbluebuttonController extends CI_Controller
             }
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Error al analizar el XML.']);
+        }
+    }
+
+
+
+    public function get_video_taller($session)
+    {
+        $apiUrl = "https://meet.iexe.edu.mx/bigbluebutton/api/getRecordings";
+        $meetingID = $session;
+        $secret = "hRCmE3KIewblr8SULmO4sBYB5nrMrhZqMygfwaVNeA"; // Cambia este valor según tu configuración
+
+        // Construir el query para la API
+        $query = "meetingID=" . $meetingID;
+        $checksum = sha1("getRecordings" . $query . $secret);
+
+        // Construir la URL completa para la API
+        $url = $apiUrl . "?" . $query . "&checksum=" . $checksum;
+
+        // Inicializar cURL
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        // Ejecutar la solicitud
+        $response = curl_exec($ch);
+
+        // Manejo de errores de cURL
+        if (curl_errno($ch)) {
+            $errorResponse = ['status' => 'error', 'message' => 'Error de cURL: ' . curl_error($ch)];
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($errorResponse))
+                ->_display();
+            exit;
+        }
+
+        // Cerrar la conexión de cURL
+        curl_close($ch);
+
+        // Cargar el XML de la respuesta
+        $xml = simplexml_load_string($response);
+        if ($xml !== false) {
+            // Convertir la respuesta XML a un array
+            $responseArray = json_decode(json_encode($xml), true);
+
+            // Verificar si hay grabaciones
+            if (isset($responseArray['recordings']['recording'])) {
+                $grabaciones = $responseArray['recordings']['recording'];
+
+                // Manejar el caso de una sola grabación o múltiples grabaciones
+                if (isset($grabaciones['recordID'])) {
+                    // Solo hay una grabación, convertirla en un array
+                    $grabaciones = [$grabaciones];
+                }
+
+                // Arreglo para almacenar la información de las grabaciones
+                $recordingsInfo = [];
+                foreach ($grabaciones as $grabacion) {
+                    $recordingsInfo[] = [
+                        'meetingID' => $grabacion['meetingID'],
+                        'internalMeetingID' => $grabacion['internalMeetingID'],
+                        'recordID' => $grabacion['recordID'],
+                        'name' => $grabacion['name'],
+                        'startTime' => date('Y-m-d H:i:s', $grabacion['startTime'] / 1000),
+                        'endTime' => date('Y-m-d H:i:s', $grabacion['endTime'] / 1000),
+                        'playbackURL' => $grabacion['playback']['format']['url']
+                    ];
+                }
+
+                // Respuesta exitosa
+                $successResponse = ['status' => 'success', 'recordings' => $recordingsInfo];
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_output(json_encode($successResponse))
+                    ->_display();
+                exit;
+            } else {
+                // No se encontraron grabaciones
+                $noRecordingsResponse = ['status' => 'error', 'message' => 'No se encontraron grabaciones.'];
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_output(json_encode($noRecordingsResponse))
+                    ->_display();
+                exit;
+            }
+        } else {
+            // Error al interpretar el XML
+            $errorResponse = ['status' => 'error', 'message' => 'Error al procesar el XML de la respuesta.'];
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($errorResponse))
+                ->_display();
+            exit;
         }
     }
 }
