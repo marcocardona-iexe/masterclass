@@ -38,6 +38,24 @@ class SesionesController extends CI_Controller
     }
 
 
+    public function get_talleres()
+    {
+        $dataTaller = $this->SesionesModel->getAll();
+        // Configurar la respuesta HTTP adecuada
+        $response = array(
+            "status" => "success",
+            "data" => array(
+                "talleres" => $dataTaller,
+            )
+        );
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response))
+            ->_display();
+        exit;
+    }
+
+
 
     public function get_session($session)
     {
