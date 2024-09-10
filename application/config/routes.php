@@ -81,6 +81,7 @@ $route['crear-sala'] = "BigbluebuttonController/crear_sala";
 $route['ver-grabacion'] = "BigbluebuttonController/ver_grabacion";
 
 
+$route['get-talleres'] = "SesionesController/get-talleres";
 
 
 
