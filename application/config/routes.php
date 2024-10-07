@@ -53,6 +53,7 @@ $route['default_controller'] = 'SesionesController/index';
 $route['nueva-sesion'] = 'SesionesController/nueva_sesion';
 
 
+$route['lista-sesiones'] = 'SesionesController/index';
 
 
 #Rutas para agregar una nueva sesion
@@ -65,6 +66,11 @@ $route['verifica-codigo-alumno/(:any)'] = 'SesionesController/verifica_codigo_al
 #Modulo del login
 $route['acceso-docente'] = 'SesionesController/acceso_docente';
 $route['validar-acceso-sesion'] = 'SesionesController/validar_acceso_sesion';
+##############################################################################################################
+
+
+#Modulos para ennpoint
+$route['get-masterclass'] = 'SesionesController/get_masterclass';
 ##############################################################################################################
 
 
