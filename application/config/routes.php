@@ -71,6 +71,8 @@ $route['validar-acceso-sesion'] = 'SesionesController/validar_acceso_sesion';
 
 #Modulos para ennpoint
 $route['get-masterclass'] = 'SesionesController/get_masterclass';
+$route['get-taller'] = 'SesionesController/get_taller';
+
 ##############################################################################################################
 
 

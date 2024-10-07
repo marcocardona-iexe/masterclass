@@ -244,6 +244,70 @@ class SesionesController extends CI_Controller
             ->set_status_header(200)
             ->set_output(json_encode($response));
     }
+
+    public function get_taller()
+    {
+        // Obtener la fecha actual
+        $current_date = date('Y-m-d');
+
+        // Inicializar variable para la respuesta
+        $response = [];
+
+        // Primero buscar sesiones con fechas mayores o iguales a la fecha actual
+        $this->db->select('*');
+        $this->db->from('sesiones');
+        $this->db->where('fecha >=', $current_date); // Solo fechas iguales o mayores a la fecha actual
+        $this->db->where('tipo', 'MASTERCLASS'); // Solo fechas mayores a la fecha actual
+
+        $this->db->order_by('fecha', 'ASC'); // Ordenar por fecha ascendente
+        $query = $this->db->get();
+
+        // Si hay sesiones con fechas futuras o la fecha actual
+        if ($query->num_rows() > 0) {
+            $results = $query->result_array();
+
+            // Verificar si la fecha actual coincide con alguna fecha de la sesión
+            foreach ($results as $session) {
+                if ($session['fecha'] == $current_date) {
+                    // Si la fecha es igual, retornar toda la información de ese registro
+                    $response = [
+                        'status' => 'success',
+                        'data' => $session
+                    ];
+                    $this->output
+                        ->set_content_type('application/json')
+                        ->set_status_header(200)
+                        ->set_output(json_encode($response));
+                    return; // Termina el método después de enviar la respuesta
+                }
+            }
+
+            // Si no hay coincidencia, calcular el número de días hasta la primera sesión futura
+            $days_until_first_session = (strtotime($results[0]['fecha']) - strtotime($current_date)) / (60 * 60 * 24);
+
+            // Rotar las imágenes de acuerdo a los días transcurridos
+            $index = $days_until_first_session % count($results); // Módulo para rotación
+            $image_to_show = $results[$index]; // Obtener la imagen correspondiente
+
+            // Armar la respuesta
+            $response = [
+                'status' => 'success',
+                'data' => $image_to_show
+            ];
+        } else {
+            // Si no hay fechas futuras ni sesión para hoy, devolver un mensaje de error
+            $response = [
+                'status' => 'error',
+                'message' => 'No hay imágenes disponibles para hoy ni para fechas futuras.'
+            ];
+        }
+
+        // Enviar la respuesta en formato JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_status_header(200)
+            ->set_output(json_encode($response));
+    }
 }
 
 
