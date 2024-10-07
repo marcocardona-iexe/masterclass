@@ -257,7 +257,7 @@ class SesionesController extends CI_Controller
         $this->db->select('*');
         $this->db->from('sesiones');
         $this->db->where('fecha >=', $current_date); // Solo fechas iguales o mayores a la fecha actual
-        $this->db->where('tipo', 'MASTERCLASS'); // Solo fechas mayores a la fecha actual
+        $this->db->where('tipo', 'TALLER'); // Solo fechas mayores a la fecha actual
 
         $this->db->order_by('fecha', 'ASC'); // Ordenar por fecha ascendente
         $query = $this->db->get();
