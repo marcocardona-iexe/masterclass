@@ -98,9 +98,9 @@ class SesionesController extends CI_Controller
     public function agregar_sesion()
     {
         // Configuración de carga de imagen
-        $config['upload_path'] = './assets/images/bannes_sesiones/'; // Directorio donde se almacenará la imagen
+        $config['upload_path'] = './assets/images/banners_sesiones/'; // Directorio donde se almacenará la imagen
         $config['allowed_types'] = 'jpg|jpeg|png'; // Tipos de archivos permitidos
-        $config['max_size'] = 2048; // Tamaño máximo del archivo en kilobytes (2MB)
+        //$config['max_size'] = 2048; // Tamaño máximo del archivo en kilobytes (2MB)
 
         $this->load->library('upload', $config);
 
