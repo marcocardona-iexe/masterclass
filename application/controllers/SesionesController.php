@@ -17,7 +17,13 @@ class SesionesController extends CI_Controller
 
     public function nueva_sesion()
     {
+
+        $this->load->view("template/head");
+        $this->load->view("template/header");
+        $this->load->view("template/menu");
+
         $this->load->view("nueva_sesion");
+        $this->load->view("template/footer", array("js" => "nueva_sesion.js"));
     }
 
 
@@ -34,7 +40,12 @@ class SesionesController extends CI_Controller
         $data = array(
             "sesiones" => $datasesiones
         );
+        $this->load->view("template/head");
+        $this->load->view("template/header");
+        $this->load->view("template/menu");
+
         $this->load->view("lista_salas", $data);
+        $this->load->view("template/footer", array("js" => "lista_sesiones.js"));
     }
 
 

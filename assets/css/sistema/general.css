@@ -1,0 +1,12 @@
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+
+#tbl_masterclass thead{
+    font-size: 13px;
+}
+
+#tbl_masterclass tbody{
+    font-size: 11px;
+}
