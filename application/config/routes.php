@@ -76,6 +76,10 @@ $route['get-taller'] = 'SesionesController/get_taller';
 ##############################################################################################################
 
 
+#Modulo Usuarios
+$route['lista-usuarios'] = 'UsuariosController/lista_usuarios';
+
+
 
 #Info para modulos en plataformas
 $route['get-session/(:any)'] = "SesionesController/get_session/$1";

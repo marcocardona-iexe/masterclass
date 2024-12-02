@@ -1,60 +1,65 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-/**
- *
- * Model Alumnos_model
- *
- * This Model for ...
- * 
- * @package		CodeIgniter
- * @category	Model
- * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
- * @link      https://github.com/setdjod/myci-extension/
- * @param     ...
- * @return    ...
- *
- */
-
 class UsuariosModel extends CI_Model
 {
 
-  // ------------------------------------------------------------------------
-
-  // Constructor
-  public function __construct()
-  {
-    parent::__construct();
-    // Cargar la base de datos
-    $this->load->database();
-    $this->table = 'usuarios';
-  }
-
-  // ------------------------------------------------------------------------
-
-  // Método para crear un nuevo registro
-  public function insert($data)
-  {
-    return $this->db->insert($this->table, $data);
-  }
-
-  // ------------------------------------------------------------------------
-
-
-  public function getByCorreo($correo)
-  {
-    $query = $this->db->get_where('usuarios', ['correo' => $correo]);
-
-    // Verifica si se encontró al menos un resultado
-    if ($query->num_rows() > 0) {
-      // Retorna el campo 'session' del primer resultado
-
-      return $query->row();
-    } else {
-      return false;
+    // Constructor
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database(); // Asegura que la base de datos esté cargada
     }
-  }
-}
 
-/* End of file Alumnos_model.php */
-/* Location: ./application/models/Alumnos_model.php */
+    // Método para crear un nuevo usuario
+    public function crearUsuario($datos)
+    {
+        return $this->db->insert('usuarios', $datos);
+    }
+
+    // Método para obtener todos los usuarios activos
+    public function obtenerUsuariosActivos()
+    {
+        $this->db->where('estatus', 1); // Solo selecciona usuarios activos
+        $query = $this->db->get('usuarios');
+        return $query->result_array();
+    }
+
+    // Método para obtener todos los usuarios sin importar el estatus u otras condiciones
+    public function obtenerTodosLosUsuarios()
+    {
+        $query = $this->db->get('usuarios'); // Obtiene todos los registros de la tabla
+        return $query->result_array();
+    }
+
+
+    // Método para obtener usuarios con condiciones específicas
+    public function obtenerUsuariosConCondiciones($condiciones = array())
+    {
+        if (!empty($condiciones)) {
+            $this->db->where($condiciones);
+        }
+        $query = $this->db->get('usuarios');
+        return $query->result_array();
+    }
+
+    // Método para obtener un solo usuario por ID
+    public function obtenerUsuarioPorId($id)
+    {
+        $query = $this->db->get_where('usuarios', array('id' => $id, 'estatus' => 1));
+        return $query->row_array();
+    }
+
+    // Método para actualizar un usuario
+    public function actualizarUsuario($id, $datos)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('usuarios', $datos);
+    }
+
+    // Método para "eliminar" un usuario (eliminación lógica)
+    public function eliminarUsuario($id)
+    {
+        $this->db->where('id', $id);
+        $datos = array('estatus' => 0); // Cambia el estatus a inactivo
+        return $this->db->update('usuarios', $datos);
+    }
+}

@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'masterclass',
+	'hostname' => 'app.iexe.edu.mx',
+	'username' => 'appiexeedu_sandbox',
+	'password' => '0b1w4nk3n0b1007',
+	'database' => 'appiexeedu_sandbox_masterclass',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
